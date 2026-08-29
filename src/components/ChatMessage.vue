@@ -61,40 +61,75 @@ onMounted(() => {
 <style lang="scss">
 .chat-message {
   line-height: 1.5;
-  display: flex;
-  align-items: center;
 
   // todo: configure
   text-shadow: 1px 1px 2px rgba(#000, 0.8);
+
   //filter: drop-shadow(1px 1px 1px #000);
 
   // with background
   background: rgba(#000, 0.8);
-  padding: 4px 2px;
+
   border-radius: 4px;
 }
 
-.badge {
-  height: 16px;
-  margin-left: 4px;
+.horizontal-layout .chat-message {
+  display: flex;
+  align-items: center;
+  gap: 0 4px;
+  padding: 4px 2px;
 }
 
-.avatar {
+.vertical-layout .chat-message {
+  padding: 6px 4px;
+}
+
+.badge {
+  height: 1rem;
+}
+
+.horizontal-layout .badge {
+}
+
+.vertical-layout .badge {
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+.horizontal-layout .avatar {
   height: 26px;
   margin-left: 4px;
   border-radius: 100%;
+  display: block;
 }
 
-.empty {
+.vertical-layout .avatar {
+  height: 1.5rem;
+  margin-bottom: -0.25rem;
+  margin-right: 0.25rem;
+  border-radius: 100%;
+  display: inline-block;
+}
+
+.horizontal-layout .empty {
   height: 30px;
   width: 1px;
   position: relative;
   left: -1px;
 }
 
+.vertical-layout .empty {
+}
+
 .username {
   font-weight: 700;
+}
+
+.horizontal-layout .username {
   margin: 0 0.2em;
+}
+
+.vertical-layout .username {
 }
 
 .pronouns {

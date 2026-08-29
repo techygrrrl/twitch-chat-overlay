@@ -1,4 +1,4 @@
-# Twitch Horizontal Chat Overlay with pronouns
+# Twitch chat overlay with pronouns
 
 - [Features and Roadmap](#features-and-roadmap)
 - [Usage](#usage)
@@ -18,23 +18,26 @@
   - [x] Show bit leader badges
   - [x] Show gift leader badges
 - [x] Show pronouns
+- [x] Support vertical and horizontal layouts
 
 ## Usage
 
 You need to pass the following query params in the URL:
 
-| Param            | Example                                 | Description                                                                                                                                               |
-| ---------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `token`          | _generated UUID_                        | **Required**: Get this from the `abstractrrr tokens` command                                                                                              |
-| `broadcaster_id` | `123456789`                             | **Required**: Twitch user ID for the streamer user of the Abstractrrr token                                                                               |
-| `host`           | `localhost` (default) or `192.168.0.15` | _(optional)_: Host that abstractrrr is running on.                                                                                                        |
-| `port`           | `9999` (default)                        | _(optional)_: Port that abstractrrr is running on.                                                                                                        |
-| `time_ms`        | `5000` (default)                        | _(optional)_: Time in milliseconds that each chat message should be displayed for                                                                         |
-| `debug`          | `1` or `0`                              | _(optional)_: Provides extra logging                                                                                                                      |
-| `hide_error`     | `1` or `0` (default: 0)                 | _(optional)_: Hides the error in the event of a networking event. Configuration errors will still display (e.g. if you don't provide required parameters) |
-| `connect`        | `sse` or `ws`                           | _(optional)_: Connection mode, one of: `ws` (web sockets), `sse` (server-sent events) (default: `ws`)                                                     |
-| `bg`             | `ef15bf`                                | _(optional)_: Adds the provided hex colour code as a background colour (default: transparent/none)                                                        |
-| `fg`             | `fff`                                   | _(optional)_: Adds the provided hex colour code as the text colour (default: ffffff)                                                                      |
+| Param            | Example                                            | Description                                                                                                                                               |
+| ---------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `token`          | _generated UUID_                                   | **Required**: Get this from the `abstractrrr tokens` command                                                                                              |
+| `broadcaster_id` | `123456789`                                        | **Required**: Twitch user ID for the streamer user of the Abstractrrr token                                                                               |
+| `host`           | `localhost` (default) or `192.168.0.15`            | _(optional)_: Host that abstractrrr is running on.                                                                                                        |
+| `port`           | `9999` (default)                                   | _(optional)_: Port that abstractrrr is running on.                                                                                                        |
+| `time_ms`        | `5000` (default)                                   | _(optional)_: Time in milliseconds that each chat message should be displayed for                                                                         |
+| `debug`          | `1` or `0`                                         | _(optional)_: Provides extra logging                                                                                                                      |
+| `hide_error`     | `1` or `0` (default: 0)                            | _(optional)_: Hides the error in the event of a networking event. Configuration errors will still display (e.g. if you don't provide required parameters) |
+| `connect`        | `sse` or `ws`                                      | _(optional)_: Connection mode, one of: `ws` (web sockets), `sse` (server-sent events) (default: `ws`)                                                     |
+| `bg`             | `ef15bf`                                           | _(optional)_: Adds the provided hex colour code as a background colour (default: transparent/none)                                                        |
+| `fg`             | `fff`                                              | _(optional)_: Adds the provided hex colour code as the text colour (default: ffffff)                                                                      |
+| `layout`         | `horizontal` or `vertical` (default: `horizontal`) | _(optional)_: The preferred layout orientation. Horizontal is like a marquee, vertical is stacked (default: `horizontal`)                                 |
+| `valign`         | `top` or `bottom` (default: `top`)                 | _(optional)_: When using `layout=vertical`, you can choose whether the layout begins from the top or bottom (default: `top`)                              |
 
 Here is an example URL with the hosted version if you'd like to use the one I use:
 

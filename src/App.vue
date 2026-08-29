@@ -9,11 +9,13 @@ import {
   hexBackgroundColourFromURL,
   hexForegroundColourFromURL,
   hostFromURL,
+  layoutModeFromURL,
   messageVisibilityMilliseconds,
   portFromURL,
   shouldHideErrorConfigFromURL,
   sslFromURL,
   tokenFromURL,
+  verticalAlignModeFromURL,
 } from "./utils/url-utils.ts";
 import {
   AbstractrrrHealthResponse,
@@ -26,6 +28,7 @@ import {
   getTwitchUserAvatar,
   IRCData,
   ircDataToTwitchChatMessage,
+  sampleVisibleMessagesData,
   transformChatBadgesResponseToLookup,
   TwitchChatMessage,
 } from "./utils/twitch-chat-utils.ts";
@@ -47,6 +50,8 @@ const fgColour = hexForegroundColourFromURL()
 const broadcasterId = broadcasterIdFromURL()
 const messageVisibility = messageVisibilityMilliseconds()
 const hideError = shouldHideErrorConfigFromURL()
+const layout = layoutModeFromURL()
+const valign = verticalAlignModeFromURL()
 const MAX_RETRIES = 20
 const RETRY_INTERVAL_MS = 1000
 
@@ -277,8 +282,8 @@ onMounted(async () => {
 
   <!-- endregion Alerts / Errors -->
 
-  <div class="horizontal-layout" :style="{ color: fgColour }">
-    <div v-for="message in visibleMessages" class="horizontal-layout__item">
+  <div :class="`${layout}-layout ${layout}-layout--${valign}`" :style="{ color: fgColour }">
+    <div v-for="message in visibleMessages" :class="`${layout}-layout__item`">
       <ChatMessage
         :pronouns="message.pronouns"
         :sub-badge="message.subBadgeUrl"
@@ -298,12 +303,29 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .horizontal-layout {
+  display: flex;
+  gap: 0.5em;
   white-space: nowrap;
-  overflow: hidden;
 }
 
 .horizontal-layout__item {
-  margin-right: 0.5rem;
-  display: inline-block;
+}
+
+.vertical-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.4em;
+  height: 100vh;
+}
+
+.vertical-layout--top {
+}
+
+.vertical-layout--bottom {
+  justify-content: flex-end;
+}
+
+.vertical-layout__item {
 }
 </style>
