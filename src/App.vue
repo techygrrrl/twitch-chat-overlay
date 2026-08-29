@@ -28,7 +28,6 @@ import {
   getTwitchUserAvatar,
   IRCData,
   ircDataToTwitchChatMessage,
-  sampleVisibleMessagesData,
   transformChatBadgesResponseToLookup,
   TwitchChatMessage,
 } from "./utils/twitch-chat-utils.ts";
