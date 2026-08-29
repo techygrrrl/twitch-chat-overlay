@@ -87,3 +87,25 @@ export function messageVisibilityMilliseconds(): number {
 
   return Math.max(parsedValue, defaultMillis)
 }
+
+export function layoutModeFromURL(): 'horizontal' | 'vertical' {
+  const params = new URLSearchParams(location.search);
+  let layoutMode: 'horizontal' | 'vertical' = 'horizontal'
+  if (params.get("layout") === 'vertical') {
+    layoutMode = 'vertical'
+  }
+
+  return layoutMode
+}
+
+export function verticalAlignModeFromURL(): 'top' | 'bottom' {
+  const params = new URLSearchParams(location.search);
+  let layoutMode: 'top' | 'bottom' = 'top'
+  if (params.get("valign") === 'bottom') {
+    layoutMode = 'bottom'
+  }
+
+  return layoutMode
+}
+
+
